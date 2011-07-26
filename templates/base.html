@@ -1,0 +1,47 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <title>Veifa</title>
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/styles.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% block inhead %}{% endblock %}
+  </head>
+  
+  <body {% block inbodytag %}{% endblock %}>
+
+	<div id="topline">
+	  <!--	  <img src="{{STATIC_URL}}images/a-line-white.png"/> -->
+	  <div id="loggedoninfo">
+		<a href="{% url terms %}">Terms</a> -
+		{% if not user.is_anonymous %}
+		Logged on as: {{user.username}} -
+		<a href="{% url logout %}">Logout</a>
+		{% else %}
+        <a href="{% url login %}?next={{url}}">Log In</a> or
+		<a href="{% url signup %}?next={{url}}">Sign Up</a>
+		{% endif %}
+	  </div>
+	  <a href="{% url entrance %}">Veifa</a>
+	</div>
+	
+	<div id="header">
+	  <h1 id="title">{% block title %}{% endblock %}</h1>
+	  {% block posttitle %}{% endblock %}
+	  <div class="clearer"></div>
+	</div>
+	
+	{% block content %} {% endblock %}
+
+	<div id="notification">
+	</div>
+	
+  </body>
+  
+  {% block postbody %}{% endblock %}
+
+</html>
+

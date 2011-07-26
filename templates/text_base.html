@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block inhead %}
+<script type="text/javascript" src="{{STATIC_URL}}js/json2.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/seedrandom.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/randomplacer.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/veifa.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/text_annot.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/youtube_annot.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/image_annot.js"></script>
+{% endblock %}
+
+{% block title %}
+{{text.name}}
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+</div>
+
+<!-- Window Template Section -->
+
+<!-- PageViewWindow.template -->
+<div id="page_view_window_template" class="page_view_window half_window template">
+  <div class="page_view_window_inner inner">
+  </div>
+</div>
+
+<!-- PageEditWindow.template -->
+<div id="page_edit_window_template" class="page_edit_window half_window template">
+  <div class="page_edit_window_inner">
+	<textarea rows=30 cols=60></textarea>
+  </div>
+</div>
+
+<!-- AIViewWindow.template -->
+<div id="ai_view_window_template" class="ai_view_window half_window template">
+  <div class="ai_view_window_inner">
+	<h3 class="ai_view_window_title"></h3>
+  </div>
+  <div class="closer top_right">X</div>
+</div>
+
+<!-- AIEditWindow.template -->
+<div id="ai_edit_window_template" class="ai_edit_window half_window template">
+  <div class="ai_edit_window_inner inner">
+	<h3>Add a new annotation:</h3>
+	<div class="ai_edit_window_choices"></div>
+  </div>
+</div>
+
+<!-- TextAnnotViewWindow.template -->
+<div id="text_annot_view_window_template"
+	 class="text_annot_view_window half_window template">
+  <div class="text_annot_view_window_inner">
+	<h3 class="text_annot_view_window_title"></h3>
+	<div class="text_annot_view_window_content"></div>
+  </div>
+  <div class="closer top_right">X</div>
+</div>
+
+<!-- TextAnnotEditWindow.template -->
+<div id="text_annot_edit_window_template"
+	 class="text_annot_edit_window half_window template">
+  <div class="text_annot_edit_window_inner inner">
+	<table>
+	  <tr>
+		<th>Title:</th>
+		<td>
+		  <textarea cols=30 rows=1 class="text_annot_edit_window_thumb"></textarea>
+		</td>
+	  </tr>
+	  <tr>
+		<th>Content</th>
+		<td>
+		  <textarea cols=30 rows=10 class="text_annot_edit_window_content"></textarea>
+		</td>
+	  </tr>
+	</table>
+	<p><a class="an_edit_window_delete">Delete</a></p>
+  </div>
+</div>
+
+<!-- TextAnnotThumbWindow.template -->
+<div id="text_annot_thumb_window_template"
+	 class="text_annot_thumb_window thumb template">
+</div>
+
+<!-- YouTubeAnnotViewWindow.template -->
+<div id="youtube_annot_view_window_template"
+	 class="youtube_annot_view_window half_window template relative">
+  <div class="youtube_annot_view_window_inner inner">
+	<h3 class="youtube_annot_view_window_title"></h3>
+	<p>
+	  <iframe type="text/html" width="200" height="150" frameborder="0" src="">
+	  </iframe>
+	</p>
+	<p class="youtube_annot_view_window_caption"></p>
+  </div>
+  <div class="closer top_right">X</div>
+</div>
+
+<!-- YouTubeAnnotEditWindow.template -->
+<div id="youtube_annot_edit_window_template"
+	 class="youtube_annot_edit_window half_window template">
+  <div class="youtube_annot_edit_window_inner inner">
+	<table>
+	  <tr>
+		<th>YouTube Code:</th>
+		<td>
+		  <textarea cols=30 rows=1 class="youtube_annot_edit_window_code"></textarea>
+		</td>
+	  </tr>
+	  <tr>
+		<th>Caption:</th>
+		<td>
+		  <textarea cols=30 rows=2 class="youtube_annot_edit_window_caption"></textarea>
+		</td>
+	  </tr>
+	</table>
+	<p><a class="an_edit_window_delete">Delete</a></p>
+  </div>
+</div>
+
+<!-- YouTubeAnnotThumbWindow.template -->
+<div id="youtube_annot_thumb_window_template"
+	 class="youtube_annot_thumb_window thumb template">
+  <img src=""></img>
+</div>
+
+<!-- ImageAnnotViewWindow.template -->
+<div id="image_annot_view_window_template"
+	 class="image_annot_view_window half_window template relative">
+  <div class="image_annot_view_window_inner inner">
+	<h3 class="image_annot_view_window_title"></h3>
+	<p>
+	  <img src=""></img>
+	</p>
+	<p class="image_annot_view_window_caption"></p>
+  </div>
+  <div class="closer top_right">X</div>
+</div>
+
+<!-- ImageAnnotEditWindow.template -->
+<div id="image_annot_edit_window_template"
+	 class="image_annot_edit_window half_window template">
+  <div class="image_annot_edit_window_inner inner">
+	<table>
+	  <tr>
+		<th>Image Url:</th>
+		<td>
+		  <textarea cols=30 rows=1 class="image_annot_edit_window_url"></textarea>
+		</td>
+	  </tr>
+	  <tr>
+		<th>Caption:</th>
+		<td>
+		  <textarea cols=30 rows=2 class="image_annot_edit_window_caption"></textarea>
+		</td>
+	  </tr>
+	</table>
+	<p><a class="an_edit_window_delete">Delete</a></p>
+  </div>
+</div>
+
+<!-- ImageAnnotThumbWindow.template -->
+<div id="image_annot_thumb_window_template"
+	 class="image_annot_thumb_window thumb template">
+  <img src="" width="60px" alt=""></img>
+</div>
+
+<!-- Screen templates -->
+
+<div id="two_section_screen" class="template">
+  <div id="left_section"></div>
+  <div id="right_section"></div>
+</div>
+
+<div id="one_section_screen" class="template">
+  <div id="both_section"></div>
+</div>
+
+{% endblock %}
+

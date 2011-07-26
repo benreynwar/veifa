@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Make text private: {{text.name}}
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+  <div id="both-container">
+	<div class="floatinner">
+	  <p>Do you really want to make this text private?</p>
+	  <form method="post" action=".">
+		{% csrf_token %}
+		<input type="submit" value="Make Private" name="Make_Private"/>
+		<input type="submit" value="Cancel" value="Cancel"/>
+	  </form>
+	</div>
+  </div>
+</div>
+  
+{% endblock %}

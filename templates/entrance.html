@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+Annotonna
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+  <div id="left-container">
+	<div class="paddedinner">
+	  <p>
+		A little introduction to the concept of the annotated text goes here.
+	  </p>
+	  <br/>
+	  {% if not user.is_anonymous %}
+	  <p><a href="{% url new_text %}">Create a new text.</a></p>
+	  {% else %}
+	  <p>To create or edit an annotated text you must be logged in.</p>
+      <p><a href="{% url login %}?next={{url}}">Log In</a></p>
+	  {% endif %}
+	  
+	</div>
+  </div>
+  <div id="right-container">
+	<div class="paddedinner">
+	  {% if show_own_text_lists %}
+	  <h3>My Public Texts</h3>
+	  {% for text in my_published_texts %}
+	  <p><a href="{% url view_text text_id=text.id %}">{{text.name}}</a></p>
+	  {% empty %}
+	  <p>You have no public texts.</p>
+	  {% endfor %}
+	  <h3>My Draft Texts</h3>
+	  {% for text in my_draft_texts %}
+	  <p><a href="{% url view_text text_id=text.id %}">{{text.name}}</a></p>
+	  {% empty %}
+	  <p>You have no draft texts.</p>
+	  {% endfor %}
+	  <h3>Other Texts</h3>
+	  {% else %}
+	  <h3>Texts</h3>
+	  {% endif %}
+	  {% for text in other_texts %}
+	  <p><a href="{% url view_text text_id=text.id %}">{{text.name}}</a> ({{text.owner.username}})</p>
+	  {% empty %}
+	  <p>There are no texts to view.</p>
+	  {% endfor %}
+	</div>
+  </div>
+</div>
+
+{% endblock %}

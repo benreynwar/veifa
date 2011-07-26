@@ -1,0 +1,36 @@
+{% extends "text_base.html" %}
+
+{% block inbodytag %}
+onunload="at.save()"
+{% endblock %}
+
+{% block posttitle %}
+	<a id="edit_link" href="{% url view_text text_id=text.id %}">View</a>
+	<a id="edit_link" href="{% url entrance %}">Select Another Text</a>
+{% endblock %}
+
+{% block postbody %}
+
+  <script type="text/javascript">
+	csrf_token = "{{csrf_token}}";
+	save_url = "{% url save_text text.id %}";
+	data = {{json|safe}};
+	var at;
+	$(document).ready(function() {
+	    Annotext.ready();
+   	    at = new Annotext(data);
+	    at.pages[0].edit_screen.show();
+	    window.onbeforeunload = function(){
+	        if (at.needs_saving) {
+	            var confirmExit = confirm('Are you sure? Changes have not been saved.');
+	            if (confirmExit) {
+		            return true;
+	            } else {
+		            return false;
+	            }
+            }
+        };
+	});
+  </script>
+
+{% endblock %}

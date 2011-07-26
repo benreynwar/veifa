@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="floatinner">
+  <h3> Sign up! </h3>
+  <form method='post' action=''>{% csrf_token %}
+	<table class=layout>
+      <tr>
+		<th align="right"><label for="username">{% trans 'Username:' %}</label></th>
+		{% if form.username.data %}
+		<td><input name="username" type="text" id="username" value="{{ form.username.data }}"/></td>
+		{% else %}
+		<td><input name="username" type="text" id="username" value=""/></td>
+		{% endif %}
+      </tr><tr>
+		<th align="right"><label for="email">{% trans 'Email Address:' %}</label></th>
+		{% if form.email.data %}
+		<td><input name="email" type="text" value="{{ form.email.data }}"><td>
+		  {% else %}
+		<td><input name="email" type="text" value=""><td>
+		  {% endif %}
+      </tr><tr>
+		<th align="right"><label for="password">{% trans 'Password:' %}</label></th>
+		<td><input name="password" type="password"><td>
+      </tr><tr>
+		<th align="right"><label for="password2">{% trans 'Repeat Password:' %}</label></th>
+		<td><input name="password2" type="password"><td>
+      </tr>
+    </table>
+	
+	<br><input name="terms" type="checkbox">I have read and agree to the <A href = "/terms/?next={{next}}"> Terms and Conditions</A>. <br> <br>
+	{{form.errors}}
+	<input name="send" type="submit" value="Sign Up">
+  </form>
+  <div>
+	<strong> {% trans 'Already have a user account?' %} </strong> <br>
+  Then <A href= "/login/?next={{next}}"> Log In</A>.<br>
+  </div>
+</div>
+
+{% endblock %}

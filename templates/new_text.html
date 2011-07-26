@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create a new text
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+  <div id="both-container">
+	<div class="floatinner">
+	  <form method="post" action=".">
+		{% csrf_token %}
+		<table>
+		  <tr><th align='right'>{{ form.text_name.label_tag }}:</th><td>{{ form.text_name }}</td></tr>
+		</table>
+		{{form.errors}}		
+		<input type="submit" value="Create" />
+	  </form>
+	</div>
+  </div>
+</div>
+  
+{% endblock %}

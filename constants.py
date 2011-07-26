@@ -1,0 +1,4 @@
+# Do max length ~ 1MB
+JSON_MAX_LENGTH = pow(2,20)
+
+TEXT_NAME_MAX_LENGTH = 50

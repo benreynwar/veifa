@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="floatinner">
+  
+  <h3>Log In!</h3>
+  {% if form.errors %}
+  <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+  {% endif %}
+  
+  <form method="post" action="">
+	{% csrf_token %}
+	<table>
+	  <tr><th align='right'>{{ form.username.label_tag }}:</th><td>{{ form.username }}</td></tr>
+	  <tr><th align='right'>{{ form.password.label_tag }}:</th><td>{{ form.password }}</td></tr>
+	</table>
+	
+	<input type="submit" value="Log In" />
+  </form>
+  
+  <div>
+	<strong> {% trans "Don't have a user account?" %} </strong> <br>
+	Then <A href= "/signup/?next={{next}}"> Sign Up</A>.<br>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Publish text: {{text.name}}
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+  <div id="both-container">
+	<div class="floatinner">
+	  <p>Do you really want to make this text public?</p>
+	  <form method="post" action=".">
+		{% csrf_token %}
+		<input type="submit" value="Publish" name="Publish"/>
+		<input type="submit" value="Cancel" name="Cancel"/>
+	  </form>
+	</div>
+  </div>
+</div>
+  
+{% endblock %}

@@ -1,0 +1,48 @@
+body { color: white; background-color: black; }
+
+a {text-decoration: none; cursor: pointer;}
+
+/* Header bar containing logos. */
+#topline { color:#222222; background-color: #AA2222; padding: 5px; padding-left: 10px;}
+#topline a { color: black; }
+
+#loggedoninfo { float: right; margin-right: 25px;}
+
+/* The title of the current text. */
+#header { clear: left; color: #AA2222; padding:20px;}
+#title { float: left; margin: 0px; margin-left: 60px; margin-right: 20px;}
+#edit_link { float: left; color: #AA2222; padding: 10px; font-size: 1.2em;}
+.clearer {clear: both;}
+
+#notification {position: fixed; bottom: 0px; right: 0px; background-color: yellow; border: solid; color: black; padding: 10px; display: none;}
+
+/* Contains the main text and annotations. */
+#container { clear: left; border-top: solid; border-color: white;}
+
+#left_section {float: left; width: 45%; height: 500px; border-right: solid; border-color: white; padding: 20px;}
+#right_section {float: left; width: 45%; padding: 20px;}
+#both_section {float:left; width: 90%; padding: 20px;}
+
+.template { display: none;}
+
+.closer {float: right; color: red; font-size: 1.5em; cursor: pointer;}
+
+.half_window { float: left; background-color: white; color: black; }
+
+.inner { padding: 20px; }
+
+.annot_link { color: blue; }
+
+.thumb {background-color: white; padding: 10px; border: solid; max-width: 200px; text-align: center; background-color: #EEEEEE; position: absolute; margin: 5px;}
+
+.top_right {position: absolute; top: 0px; right: 0px; }
+
+.ai_view_window { float: left; position: relative;}
+.ai_view_window_title {position: absolute;}
+.ai_view_window_inner { position: relative; margin: 20px; }
+
+.text_annot_view_window {float: left; position: relative;}
+.text_annot_view_window {}
+.text_annot_view_window_inner {position: relative; margin: 20px;}
+
+.relative { position: relative;}

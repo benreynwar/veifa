@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Deleting: {{text.name}}
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+  <div id="both-container">
+	<div class="floatinner">
+	  <p>Do you really want to delete this text?</p>
+	  <form method="post" action="">{% csrf_token %}
+		<input type="submit" value="Yes" name="Yes"/>
+		<input type="submit" value="No" name="No"/>
+	  </form>
+	</div>
+  </div>
+</div>
+
+{% endblock %}
+
