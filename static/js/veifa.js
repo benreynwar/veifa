@@ -360,9 +360,11 @@ Page.prototype.update_view_window = function(element) {
 		} else {
 			ais[key].links = this.links[key];
 		}
-		if (ais[key].annotations.length === 0) {
-			for (var i = 0; i < ais[key].links.length; i++) {
-				ais[key].links[i].addClass = "empty_annot_link";
+		for (var i = 0; i < ais[key].links.length; i++) {
+			if (ais[key].annotations.length === 0) {
+				ais[key].links[i].addClass("empty_annot_link");
+			} else {
+				ais[key].links[i].removeClass("empty_annot_link");
 			}
 		}
 	}
@@ -421,14 +423,14 @@ AnnotatedItem.prototype.select = function(link_text) {
 	}
 	this.annotext.current_annotated_item = this;
 	for (var i = 0; i < this.links.length; i++) {
-		this.links[i].className = "current_annot_link";
+		this.links[i].addClass("current_annot_link");
 	}
 };
 
 // Set old annotated item link back to normal.
 AnnotatedItem.prototype.unselect = function() {
 	for (var i = 0; i < this.links.length; i++) {
-		this.links[i].className = "annot_link";
+		this.links[i].removeClass("current_annot_link");
 	}
 };
 

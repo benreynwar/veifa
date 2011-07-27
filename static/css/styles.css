@@ -14,35 +14,39 @@ a {text-decoration: none; cursor: pointer;}
 #edit_link { float: left; color: #AA2222; padding: 10px; font-size: 1.2em;}
 .clearer {clear: both;}
 
+/* A notification bar that pops up when things need saving.*/
 #notification {position: fixed; bottom: 0px; right: 0px; background-color: yellow; border: solid; color: black; padding: 10px; display: none;}
 
 /* Contains the main text and annotations. */
 #container { clear: left; border-top: solid; border-color: white;}
 
+/* Next level below container */
 #left_section {float: left; width: 45%; height: 500px; border-right: solid; border-color: white; padding: 20px;}
 #right_section {float: left; width: 45%; padding: 20px;}
-#both_section {float:left; width: 90%; padding: 20px;}
+#both_section {float:left; padding: 20px;}
 
+/* Make sure the template divs are initially not displayed. */
+/* In the javascript these divs are cloned and then shown when necessary. */
 .template { display: none;}
 
+/* How to display the 'X' that closes windows.*/
 .closer {float: right; color: red; font-size: 1.5em; cursor: pointer;}
 
-.half_window { float: left; background-color: white; color: black; }
+.inner { float:left; padding: 20px; background-color: white; color: black; }
 
-.inner { padding: 20px; }
-
+/* How to display the annotation links in the page text.*/
 .annot_link { color: blue; }
+.current_annot_link {color: red;}
+.empty_annot_link {}
 
+/* A thumbnail for a annotation in the annotated item view */
 .thumb {background-color: white; padding: 10px; border: solid; max-width: 200px; text-align: center; background-color: #EEEEEE; position: absolute; margin: 5px;}
 
+/* position at object in the top-right */
+/* used for the close elements sometimes */
 .top_right {position: absolute; top: 0px; right: 0px; }
 
-.ai_view_window { float: left; position: relative;}
-.ai_view_window_title {position: absolute;}
-.ai_view_window_inner { position: relative; margin: 20px; }
-
-.text_annot_view_window {float: left; position: relative;}
-.text_annot_view_window {}
-.text_annot_view_window_inner {position: relative; margin: 20px;}
+/* The title of that annotated item view */
+.ai_view_window_title {position: absolute; font-size: 1.5em; color: #AA2222}
 
 .relative { position: relative;}

@@ -1,6 +1,6 @@
 # Django settings for veifa project.
 
-DEBUG = True
+DEBUG = Flase
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

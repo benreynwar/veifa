@@ -3,7 +3,8 @@
 
 {% block content %}
 
-<div class="floatinner">
+<div id="both_section">
+<div class="inner">
   <h3> Sign up! </h3>
   <form method='post' action=''>{% csrf_token %}
 	<table class=layout>
@@ -38,6 +39,7 @@
 	<strong> {% trans 'Already have a user account?' %} </strong> <br>
   Then <A href= "/login/?next={{next}}"> Log In</A>.<br>
   </div>
+</div>
 </div>
 
 {% endblock %}

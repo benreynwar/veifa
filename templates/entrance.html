@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}
-Annotonna
+Veifa
 {% endblock %}
 
 {% block content %}
 
 <div id="container">
-  <div id="left-container">
-	<div class="paddedinner">
+  <div id="left_section">
+	<div class="inner">
 	  <p>
 		A little introduction to the concept of the annotated text goes here.
 	  </p>
@@ -22,8 +22,8 @@ Annotonna
 	  
 	</div>
   </div>
-  <div id="right-container">
-	<div class="paddedinner">
+  <div id="right_section">
+	<div class="inner">
 	  {% if show_own_text_lists %}
 	  <h3>My Public Texts</h3>
 	  {% for text in my_published_texts %}

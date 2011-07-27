@@ -3,7 +3,8 @@
 
 {% block content %}
 
-<div class="floatinner">
+<div id="both_section">
+<div class="inner">
   
   <h3>Log In!</h3>
   {% if form.errors %}
@@ -24,6 +25,7 @@
 	<strong> {% trans "Don't have a user account?" %} </strong> <br>
 	Then <A href= "/signup/?next={{next}}"> Sign Up</A>.<br>
   </div>
+</div>
 </div>
 
 {% endblock %}
