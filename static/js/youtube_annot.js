@@ -91,7 +91,6 @@ YouTubeAnnotViewWindow.prototype.update = function() {
 	}
 	this.title.empty();
 	this.title.append(this.annotation.annotated_item.link_text);
-	console.log("new code " + this.annotation.data.code + " old code " + this.old_code);
 	if (this.annotation.data.code !== this.old_code) {
 		this.iframe.attr("src", "http://www.youtube.com/embed/"+this.annotation.data.code);
 		this.old_code = this.annotation.data.code;
