@@ -208,12 +208,10 @@ Annotext.prototype.save_fail = function() {
 
 // Save the veifatext to the server.
 Annotext.prototype.save = function() {
-	console.log("wants to save");
 	if (!this.needs_saving) {
 		return;
 	}
 	this.tidy();
-	console.log("Saving")
 	var data = JSON.stringify(this.make_json());
 	jQuery.ajax({"url": save_url,
 				 "type": "POST",  
@@ -226,7 +224,6 @@ Annotext.prototype.save = function() {
 			     }, 
 				 "data": {"json": data}
 		});
-	console.log("Done Saving")
 	this.needs_saving = false;
 };
 
@@ -667,7 +664,6 @@ AIViewWindow.prototype.select_annotation = function(an) {
 };
 
 AIViewWindow.prototype.update = function() {
-	console.log("AIViewWindow update altered is " + this.altered);
 	if (!this.altered) {
 		return;
 	}
