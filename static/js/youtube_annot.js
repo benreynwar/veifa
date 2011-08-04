@@ -104,6 +104,12 @@ function YouTubeAnnotThumbWindow(an) {
 	this.annotation = an;
 	this.node = YouTubeAnnotThumbWindow.template.clone();
 	this.img = this.node.find("img").first();
+	this.img.load(function(e) {
+		// The size of this thumb is altered so the AIViewWindow
+		// needs to be adjusted.
+		an.annotated_item.view_window.altered = true;
+		an.annotated_item.view_window.update();
+		});
 	AnThumbWindow.call(this, an);
 }
 make_subclass(YouTubeAnnotThumbWindow, AnThumbWindow);

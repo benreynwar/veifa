@@ -30,7 +30,6 @@ ImageAnnotation.prototype.is_empty = function() {
 };
 
 ImageAnnotation.prototype.set_url = function(url) {
-	console.log("setting url to " + url);
 	this.thumb_window.altered = true;
 	this.view_window.altered = true;
 	this.annotated_item.view_window.altered = true;
@@ -108,6 +107,12 @@ function ImageAnnotThumbWindow(an) {
 	this.node = ImageAnnotThumbWindow.template.clone();
 	this.img = this.node.find("img").first();
 	this.old_url = null;
+	this.img.load(function(e) {
+		// The size of this thumb is altered so the AIViewWindow
+		// needs to be adjusted.
+		an.annotated_item.view_window.altered = true;
+		an.annotated_item.view_window.update();
+		});
 	AnThumbWindow.call(this, an);
 }
 make_subclass(ImageAnnotThumbWindow, AnThumbWindow);

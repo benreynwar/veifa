@@ -667,7 +667,6 @@ AIViewWindow.prototype.update = function() {
 	if (!this.altered) {
 		return;
 	}
-	//return;
 	this.title.empty();
 	this.title.append(this.ai.link_text);
 	// Make sure that the correct thumb nodes are within
@@ -696,7 +695,12 @@ AIViewWindow.prototype.position_thumbs = function() {
 			// positioning.
 			// FIXME
 			// Probably a bad idea if the thumb contents are longer than they were.
-			thumb.css('width', thumb.width());
+			var width = thumb.width();
+			// Don't set window width if it's zero since that means the content 
+			// isn't loaded yet.
+			if (width > 0) {
+				thumb.css('width', thumb.width());
+			}
 			var blockage = new Blockage({'l': 0, 'r': 0}, thumb); 
 			items.push(blockage);
 		});
