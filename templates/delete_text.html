@@ -7,8 +7,8 @@ Deleting: {{text.name}}
 {% block content %}
 
 <div id="container">
-  <div id="both-container">
-	<div class="floatinner">
+  <div id="both_section">
+	<div class="inner">
 	  <p>Do you really want to delete this text?</p>
 	  <form method="post" action="">{% csrf_token %}
 		<input type="submit" value="Yes" name="Yes"/>
