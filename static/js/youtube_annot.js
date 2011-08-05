@@ -112,11 +112,10 @@ function YouTubeAnnotThumbWindow(an) {
 			an.annotated_item.view_window.update();
 		});
 	var img = this.img;
+	var node = this.node;
 	this.img.error(function() {
 			if (img.attr("src") !== no_image_url) {
 				img.attr("src", no_image_url);
-				node.css('width', "");				
-				node.css('width', node.width());				
 			}
 		});
 	AnThumbWindow.call(this, an);

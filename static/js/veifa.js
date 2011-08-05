@@ -664,7 +664,7 @@ AIViewWindow.prototype.select_annotation = function(an) {
 };
 
 AIViewWindow.prototype.update = function() {
-	if (!this.altered) {
+	if ((!this.altered) || !(this.node.is(":visible"))){
 		return;
 	}
 	this.title.empty();

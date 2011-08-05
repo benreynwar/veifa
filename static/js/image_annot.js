@@ -124,8 +124,6 @@ function ImageAnnotThumbWindow(an) {
 	this.img.error(function() {
 			if (img.attr("src") !== no_image_url) {
 				img.attr("src", no_image_url);
-				node.css('width', "");				
-				node.css('width', node.width());				
 			}
 		});
 	AnThumbWindow.call(this, an);
