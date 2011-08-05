@@ -57,6 +57,7 @@ function YouTubeAnnotEditWindow(an) {
 	this.code_field.blur(function() {
 			an.set_code(code_field.val());
 			an.view_window.update();
+			an.thumb_window.update();
 		});
 	this.caption_field.keyup(function() {
 			an.set_caption(caption_field.val());
@@ -104,11 +105,19 @@ function YouTubeAnnotThumbWindow(an) {
 	this.annotation = an;
 	this.node = YouTubeAnnotThumbWindow.template.clone();
 	this.img = this.node.find("img").first();
-	this.img.load(function(e) {
-		// The size of this thumb is altered so the AIViewWindow
-		// needs to be adjusted.
-		an.annotated_item.view_window.altered = true;
-		an.annotated_item.view_window.update();
+	this.img.load(function() {
+			// The size of this thumb is altered so the AIViewWindow
+			// needs to be adjusted.
+			an.annotated_item.view_window.altered = true;
+			an.annotated_item.view_window.update();
+		});
+	var img = this.img;
+	this.img.error(function() {
+			if (img.attr("src") !== no_image_url) {
+				img.attr("src", no_image_url);
+				node.css('width', "");				
+				node.css('width', node.width());				
+			}
 		});
 	AnThumbWindow.call(this, an);
 }

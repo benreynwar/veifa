@@ -26,6 +26,7 @@ def _get_context(request):
     """
     d = {}
     d['url'] = urlquote(request.get_full_path())
+    d['no_image_url'] = settings.STATIC_URL + "images/no_image.jpg"
     context = RequestContext(request, d)
     return context
 

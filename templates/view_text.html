@@ -17,6 +17,8 @@
 
   <script type="text/javascript">
 	save_url = "{% url save_text text.id %}";
+	static_url = "{{STATIC_URL}}";
+	no_image_url = "{{no_image_url}}"
 	data = {{json|safe}}
 	var at;
 	$(document).ready(function() {

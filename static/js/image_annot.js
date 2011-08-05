@@ -57,6 +57,7 @@ function ImageAnnotEditWindow(an) {
 	this.url_field.blur(function() {
 			an.set_url(url_field.val());
 			an.view_window.update();
+			an.thumb_window.update();
 		});
 	this.caption_field.keyup(function() {
 			an.set_caption(caption_field.val());
@@ -77,6 +78,12 @@ function ImageAnnotViewWindow(an) {
 	this.img = this.node.find("img").first();
 	this.caption = this.node.find(".image_annot_view_window_caption").first();
 	this.old_url = null;
+	var img = this.img;
+	this.img.error(function() {
+			if (img.attr("src") !== no_image_url) {
+				img.attr("src", no_image_url);
+			}
+		});
 	AnViewWindow.call(this, an);
 }
 make_subclass(ImageAnnotViewWindow, AnViewWindow);
@@ -96,7 +103,6 @@ ImageAnnotViewWindow.prototype.update = function() {
 		this.img.attr("src", this.annotation.data.url);
 		this.old_url = this.annotation.data.url;
 	}
-	this.img.attr("alt", this.annotation.data.caption);
 	this.caption.empty();
 	this.caption.append(this.annotation.data.caption);
 	this.altered = false;
@@ -110,8 +116,17 @@ function ImageAnnotThumbWindow(an) {
 	this.img.load(function(e) {
 		// The size of this thumb is altered so the AIViewWindow
 		// needs to be adjusted.
-		an.annotated_item.view_window.altered = true;
-		an.annotated_item.view_window.update();
+			an.annotated_item.view_window.altered = true;
+			an.annotated_item.view_window.update();
+		});
+	var img = this.img;
+	var node = this.node;
+	this.img.error(function() {
+			if (img.attr("src") !== no_image_url) {
+				img.attr("src", no_image_url);
+				node.css('width', "");				
+				node.css('width', node.width());				
+			}
 		});
 	AnThumbWindow.call(this, an);
 }
@@ -126,7 +141,11 @@ ImageAnnotThumbWindow.prototype.update = function() {
 		return;
 	}
 	if (this.annotation.data.url !== this.old_url) {
-		this.img.attr("src", this.annotation.data.url);
+		if (this.annotation.data.url !== "") {
+			this.img.attr("src", this.annotation.data.url);
+		} else {
+			this.img.attr("src", no_image_url);
+		}
 		this.old_url = this.annotation.data.url;
 	}
 	this.img.attr("alt", this.annotation.data.caption);
